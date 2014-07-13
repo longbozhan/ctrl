@@ -373,12 +373,6 @@ static void ShowHelp(char* sCommand)
     cout << endl;
 }
 
-/*============================================================================*/
-// Function Name : GetServerConfig
-// Purpose : Get Server Config From Config File
-// Last Modified :
-//     2003/03/26 By Lane Zhang, Created.
-/*============================================================================*/
 
 void GetServerConfig( const char* sConfigFile ){
     struct stat statbuf;
@@ -405,12 +399,6 @@ void GetServerConfig( const char* sConfigFile ){
     return;
 }
 
-/*============================================================================*/
-// Function Name : LoadConfigVarValue
-// Purpose : Load Config Var Value
-// Last Modified :
-//     2003/03/26 By Lane Zhang, Created.
-/*============================================================================*/
 
 int LoadConfigVarValue( const char* sBuffer, struct _configinfo_t* ptConfigInfo ){
     const char *pStart = NULL;  //¿ªÊ¼µã
