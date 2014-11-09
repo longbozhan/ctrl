@@ -36,7 +36,9 @@ void CtrlProc::DoIt(void)
 {
 	int iRet = 0, iLoop = 1;
 	S_PROC_CMD stCmd;
-
+	
+	WriteRst(0);
+	
 	while (iLoop)
 	{
 		try 
