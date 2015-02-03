@@ -399,7 +399,6 @@ void GetServerConfig( const char* sConfigFile ){
     return;
 }
 
-
 int LoadConfigVarValue( const char* sBuffer, struct _configinfo_t* ptConfigInfo ){
     const char *pStart = NULL;  //¿ªÊ¼µã
     int i = 0;
