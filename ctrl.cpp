@@ -203,6 +203,7 @@ void CCtrl::SelectIdleProc()
 	if (retval == -1)
 	{
 		printf("SelectIdleProc::select retval=-1 Error\n");
+		fflush(stdout);
 	}
 	else if (retval)
 	{
@@ -214,11 +215,13 @@ void CCtrl::SelectIdleProc()
 				if(retval == -1 && errno==EINTR)
 				{
 					printf("SelectIdleProc::select read Error break\n");
+					fflush(stdout);
 					break;
 				}
 				if(retval == -1)
 				{
 					printf("SelectIdleProc::select read Error continue\n");
+					fflush(stdout);
 					continue;
 				}
 
@@ -238,6 +241,8 @@ void CCtrl::SelectIdleProc()
 					it->second.procsstate = procsstate_idle;
 					printf("SelectIdleProc::select read Other\n");
 				}
+
+				fflush(stdout);
 			}
 			// end of if, end set the retval
 		}
@@ -246,6 +251,7 @@ void CCtrl::SelectIdleProc()
 	else
 	{
 		printf("DoIt::select retval=0\n");
+		fflush(stdout);
 	}
 }
 
@@ -360,8 +366,15 @@ static void InitAsDaemon()
 	
     if (fork() > 0)
         exit(0);
-	
-    umask(0);
+
+	close(0);
+	close(1);
+	close(2);
+    fopen("./ctrl.log", "w+");
+	dup2(0,1);
+	dup2(0,2);
+
+	umask(0);
 }
 
 
